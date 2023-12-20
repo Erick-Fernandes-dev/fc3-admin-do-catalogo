@@ -1,0 +1,23 @@
+A ideia de separar em módulos é para justamente de não ter uma dependencia. de
+não ter um acoplamento, ou seja, uma maneira de bloquear acoplamento
+
+
+## Criando a Entidade Categoria
+
+- Nome
+- Descrição
+- Ativar ou desativar
+- Auditoria (data de criação. atualização e deleção)
+
+
+### Regras de negócio
+-  Nome não deve ser nulo ou  em branco
+-  Nome deve conter no mínimo 3 caracteres
+-  Descrição pode ser nula ou em branco
+
+Implementando as classes do DDD
+
+- ValueObject
+- Entity
+- Indentifier
+- AggregateRoot
