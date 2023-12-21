@@ -3,6 +3,7 @@ package com.algnologia.admin.catalogo.domain.category;
 // ele calcula o tempo desde o começo, é bem preciso
 //UTC - Hora atual
 import com.algnologia.admin.catalogo.domain.AggregateRoot;
+import com.algnologia.admin.catalogo.domain.validation.ValidationHandler;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -38,14 +39,19 @@ public class Category extends AggregateRoot<CategoryID> {
     public static Category newCategory(final String aName, final String aDescription, final boolean aActive) {
 
         //Gerando um id único randomico
-        final var id = UUID.randomUUID().toString();
+        final var id = CategoryID.unique();
         final var now = Instant.now();
 
         return new Category(id, aName, aDescription, aActive, now, now, null);
 
     }
 
-    public String getId() {
+    @Override
+    public void validate(final ValidationHandler handler) {
+        new CategoryValidator(this, handler).validate();
+    }
+
+    public CategoryID getId() {
         return id;
     }
 

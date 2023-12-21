@@ -14,6 +14,8 @@ public class CategoryID extends Identifier {
         this.value = value;
     }
 
+    // Factory Methods abaixo
+
     public static CategoryID unique() {
         return CategoryID.from(UUID.randomUUID());
     }
@@ -30,6 +32,8 @@ public class CategoryID extends Identifier {
     public String getValue() {
         return value;
     }
+
+    // fim
 
     @Override
     public boolean equals(Object o) {

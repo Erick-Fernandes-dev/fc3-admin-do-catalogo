@@ -2,7 +2,7 @@ A ideia de separar em módulos é para justamente de não ter uma dependencia. d
 não ter um acoplamento, ou seja, uma maneira de bloquear acoplamento
 
 
-## Criando a Entidade Categoria
+## Criando a Entidade Categoria - ok
 
 - Nome
 - Descrição
@@ -15,9 +15,20 @@ não ter um acoplamento, ou seja, uma maneira de bloquear acoplamento
 -  Nome deve conter no mínimo 3 caracteres
 -  Descrição pode ser nula ou em branco
 
-Implementando as classes do DDD
+Implementando as classes do DDD - ok
 
 - ValueObject
 - Entity
 - Indentifier
 - AggregateRoot
+
+## Tornando uma classe category um AgregateRoot - ok
+
+## Introdução as validações de negócio - ok
+
+## Implementando o category validator - ok
+
+
+## Introdução as validações de negócio
+
+![
