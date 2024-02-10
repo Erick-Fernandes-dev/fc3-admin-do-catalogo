@@ -11,8 +11,10 @@ public interface ValidationHandler {
     ValidationHandler validate(Validation aValidation);
 
 
+    //Implementando uma lista de erros
     List<Error> getErrors();
 
+    // Vai verificar se tem erro ou não
     default boolean hasError() {
         return getErrors() != null && !getErrors().isEmpty();
     }

@@ -36,19 +36,38 @@ public class Category extends AggregateRoot<CategoryID> {
     }
 
     // Factory
-    public static Category newCategory(final String aName, final String aDescription, final boolean aActive) {
+    public static Category newCategory(final String aName, final String aDescription, final boolean isActive) {
 
         //Gerando um id único randomico
         final var id = CategoryID.unique();
         final var now = Instant.now();
-
-        return new Category(id, aName, aDescription, aActive, now, now, null);
+        final var deletedAt = isActive ? null : now;
+        return new Category(id, aName, aDescription, isActive, now, now, deletedAt);
 
     }
 
     @Override
     public void validate(final ValidationHandler handler) {
         new CategoryValidator(this, handler).validate();
+    }
+
+    //Criando método para ativar a categoria
+    public Category activate() {
+        this.deletedAt = null;
+        this.active = true;
+        this.updatedAt = Instant.now();
+        return this;
+    }
+
+    //Criando método para desativar a categoria
+    public Category deactivate() {
+        if (getDeletedAt() == null) {
+            this.deletedAt = Instant.now();
+        }
+
+        this.active = false;
+        this.updatedAt = Instant.now();
+        return this;
     }
 
     public CategoryID getId() {
@@ -63,7 +82,6 @@ public class Category extends AggregateRoot<CategoryID> {
     public String getDescription() {
         return description;
     }
-
 
 
     public boolean isActive() {
